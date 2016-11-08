@@ -40,4 +40,6 @@ lazy val macroSettings = Seq(
 
 lazy val macros = project.settings(metaMacroSettings)
 
+lazy val oldmacros = project.settings(macroSettings)
+
 lazy val app = project.settings(metaMacroSettings).dependsOn(macros)
