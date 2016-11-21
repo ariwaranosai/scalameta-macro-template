@@ -26,7 +26,9 @@ lazy val macroSettings = Seq(
   scalacOptions ++= Seq(
     "-language:higherKinds",
     "-language:existentials",
-    "-Xplugin-require:macroparadise"
+    "-Xplugin-require:macroparadise",
+    "-language:experimental.macros",
+    "-Ymacro-debug-lite"
   ),
 
   libraryDependencies ++= Seq(
