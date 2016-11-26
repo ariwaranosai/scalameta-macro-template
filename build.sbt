@@ -26,14 +26,15 @@ lazy val macroSettings = Seq(
   scalacOptions ++= Seq(
     "-language:higherKinds",
     "-language:existentials",
-    "-Xplugin-require:macroparadise",
     "-language:experimental.macros",
-    "-Ymacro-debug-lite"
+    "-Xplugin-require:macroparadise",
+    "-language:experimental.macros"
   ),
 
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-compiler" % scalaVersion.value % "provided",
     "org.scala-lang" % "scala-reflect" % scalaVersion.value % "provided",
+    "org.typelevel" %% "macro-compat" % "1.1.1",
     "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.4",
     "org.scalatest" %% "scalatest" % "3.0.0" % "test"
   ),
@@ -43,5 +44,6 @@ lazy val macroSettings = Seq(
 lazy val macros = project.settings(metaMacroSettings)
 
 lazy val oldmacros = project.settings(macroSettings)
+  .settings(scalacOptions in Test += "-Ymacro-debug-lite")
 
 lazy val app = project.settings(metaMacroSettings).dependsOn(macros)
