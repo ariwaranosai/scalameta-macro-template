@@ -5,12 +5,6 @@ import scala.annotation.compileTimeOnly
 import scala.collection.immutable.Seq
 import scala.meta._
 import scala.meta.Term.Param
-import autocomplete._
-
-object autocomplete {
-  val inline = 1
-  def meta[T](ext: => T): T = ext
-}
 
 @compileTimeOnly("@examples.Main not expanded")
 class main extends scala.annotation.StaticAnnotation {
@@ -21,7 +15,7 @@ class main extends scala.annotation.StaticAnnotation {
   }
 }
 
-@compileTimeOnly("@examples.Main not expanded")
+@compileTimeOnly("@examples.mcase not expanded")
 class mcase extends scala.annotation.StaticAnnotation {
   inline def apply(defn: Any): Any = meta {
     val q"case class $tname[..$tparams] ..$mods (...$paramss)" = defn
