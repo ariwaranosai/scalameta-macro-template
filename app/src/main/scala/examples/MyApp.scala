@@ -1,6 +1,6 @@
 package examples
 
-import menum.EnumMacros
+import menum.menum
 
 @mcase
 case class Hello(name: String, id: Int)
@@ -8,7 +8,7 @@ case class Hello(name: String, id: Int)
 @main
 object MyApp {
 
-  @EnumMacros
+  @menum
   object kancolle {
     type Value = String
     val saratoga = "233"

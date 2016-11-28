@@ -9,7 +9,7 @@ import scala.meta._
   */
 
 @compileTimeOnly("@menum.EnumMacros not expand")
-class EnumMacros extends scala.annotation.StaticAnnotation {
+class menum extends scala.annotation.StaticAnnotation {
   inline def apply(defn: Any): Any = meta {
     val q"object $tname { ..$stats}"  = defn
     val className = Type.Name(tname.value)
